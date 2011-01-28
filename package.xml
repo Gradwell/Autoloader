@@ -3,16 +3,16 @@
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
-  <name>Your Package Name</name>
-  <channel>Your PEAR server</channel>
-  <summary>Summary goes here</summary>
+  <name>Autoloader</name>
+  <channel>pear.gradwell.com</channel>
+  <summary>Simple PHP library for autoloading classes</summary>
   <description>
-    Description goes here
+    Autoloader is a PSR0-compatible autoloader.
   </description>
   <lead>
-    <name>Your name</name>
-    <user>Anything goes here</user>
-    <email>Your email address</email>
+    <name>Stuart Herbert</name>
+    <user>stuart</user>
+    <email>stuart.herbert@gradwell.com</email>
     <active>yes</active>
   </lead>
   <date>${build.date}</date>
@@ -25,7 +25,7 @@
     <release>stable</release>
     <api>stable</api>
   </stability>
-  <license>All rights reserved.</license>
+  <license>All rights reserved. Released under the BSD license.</license>
   <notes>
     No notes.
   </notes>
@@ -37,32 +37,26 @@ ${contents}
   <dependencies>
     <required>
       <php>
-        <min>5.2.0</min>
+        <min>5.3.0</min>
       </php>
       <pearinstaller>
         <min>1.6.0</min>
       </pearinstaller>
-      <package>
-        <name>MF_Autoloader</name>
-        <channel>pear.methodosity.com</channel>
-        <min>0.2.0</min>
-	      <max>1.999.9999</max>
-      </package>
     </required>
   </dependencies>
   <phprelease />
   <changelog>
     <release>
       <version>
-        <release>X.Y.Z</release>
-        <api>X.Y</api>
+        <release>1.0.0</release>
+        <api>1.0</api>
       </version>
       <stability>
         <release>stable</release>
         <api>stable</api>
       </stability>
-      <date>Your release date</date>
-      <license>All rights reserved</license>
+      <date>2011-01-28</date>
+      <license>All rights reserved. Released under the BSD license.</license>
       <notes>
       </notes>
     </release>
