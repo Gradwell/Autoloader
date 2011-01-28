@@ -83,9 +83,30 @@ function __gwc_include($filename)
 
 function __gwc_autoload_alsoSearch($dir)
 {
-	set_include_path($dir . PATH_SEPARATOR . get_include_path());
+        $dir = realpath($dir);
+
+        // check to make sure that $dir is not already in the path
+        $pathToSearch = explode(PATH_SEPARATOR, get_include_path());
+
+        $isDuplicate = false;
+        foreach ($pathToSearch as $dirToSearch)
+        {
+                $dirToSearch = realpath($dirToSearch);
+                if ($dirToSearch == $dir)
+                {
+                        $isDuplicate = true;
+                        break;
+                }
+        }
+
+        if (!$isDuplicate)
+        {
+                set_include_path($dir . PATH_SEPARATOR . get_include_path());
+        }
 }
 
 spl_autoload_register('__gwc_autoload');
+// assume that we are at the top of a vendor tree to load from
+__gwc_autoload_alsoSearch(__DIR__);
 
 ?>
