@@ -88,21 +88,20 @@ function __gwc_autoload_alsoSearch($dir)
         // check to make sure that $dir is not already in the path
         $pathToSearch = explode(PATH_SEPARATOR, get_include_path());
 
-        $isDuplicate = false;
         foreach ($pathToSearch as $dirToSearch)
         {
                 $dirToSearch = realpath($dirToSearch);
                 if ($dirToSearch == $dir)
                 {
-                        $isDuplicate = true;
-                        break;
+                        // we have found it
+                        // remove it from the list
+                        $key = key($pathToSearch);
+                        unset($pathToSearch[$key]);
                 }
         }
 
-        if (!$isDuplicate)
-        {
-                set_include_path($dir . PATH_SEPARATOR . get_include_path());
-        }
+        // add the new directory to the front of the path
+        set_include_path($dir . PATH_SEPARATOR . implode(PATH_SEPARATOR, $pathToSearch));
 }
 
 spl_autoload_register('__gwc_autoload');
