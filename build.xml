@@ -156,9 +156,9 @@
   </target>
 
   <!-- Populate vendor with the dependencies for this component -->
-  <target name="build-vendor" depends="pear-package-for-lib-vendor,setup-vendor">
-    <echo>Populating lib/vendor with dependencies</echo>
-    <exec command="php tools/registerchannels.php build.properties package.xml ${project.tmpdir}/pear-config ${project.vendordir}" checkreturn="true" logoutput="true" />
+  <target name="build-vendor" depends="pear-package,setup-vendor">
+    <echo>Populating vendor/ with dependencies</echo>
+    <exec command="phin pear:register-channels" checkreturn="true" logoutput="true" />
     <exec command="pear -c ${project.tmpdir}/pear-config install --alldeps ${project.builddir}/package.xml" logoutput="true" checkreturn="true"/>
   </target>
 
@@ -185,7 +185,7 @@
     <delete dir="${project.builddir}" />
     <mkdir dir="${project.pkgdir}" />
     <copy todir="${project.pkgdir}">
-      <fileset refid="srcfiles"/>
+      <fileset refid="phpfiles"/>
     </copy>
     <copy todir="${project.builddir}">
       <fileset dir=".">
