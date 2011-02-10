@@ -24,7 +24,7 @@ From source:
 
     git clone git@github.com:Gradwell/Autoloader.git
     cd Autoloader
-    phing install.local
+    phing install-system
 
 Both of these approaches will install the Autoloader code into your system's standard location (usually /usr/share/php).
 
@@ -46,8 +46,8 @@ Development
 
 You will need the following dependencies installed first.
 
-* Phing
-* d51PearPkg2Task plugin for Phing from domain51.com
+* phix
+* phing
 * PHPUnit
 * xdebug
 * pdepend
